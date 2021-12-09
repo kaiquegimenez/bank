@@ -27,30 +27,39 @@
 
     <fieldset>
       <h3>Fazer novo lançamento</h3>
-      <label>Tipo de operação</label>
-      <input type ="text" id='tipo' name="tipo" required>
+      <input type="radio" id="sacar" checked name="tipo" value="depositar">
+      <label for="html">Depositar</label><br>
+      <input type="radio" id="depositar" name="tipo" value="sacar">
+      <label for="css">Sacar</label><br>
+      <!-- <input type ="text" id='tipo' name="tipo" required> -->
       <br><br>
-      <label>Valor</label>
-      <input type="number" id="valor" name="valor" required>
+      <input type="number" id="valor" placeholder="Valor" name="valor" value="0" required>
       <br><br>
-      <label>Descrição</label>
-      <input type="text" id="descrição" name="descrição" required>
-      <button type ="reset">Reset</button>
+      <textarea id="descrição" name="descrição" required placeholder="Descrição"></textarea>
+      <br>
       <button type ="submit" onclick="novoLancamento()">Submit</button>
     </fieldset>
 
   <table>
     <thead>
       <tr>
-        <th>Data</th>
-        <th>Código</th>
+        <th>
+          Data
+          <button onclick="ordenarData()">Ordenar</button>
+        </th>
+        <th>
+          Código
+          <button onclick="ordenarCodigo()">Ordenar</button>
+        </th>
         <th>Descrição</th>
         <th>Valor</th>
         <th>Saldo</th>
+        <th>Ações</th>
       </tr>
     </thead>
     <tbody name="tableBody"></tbody>
   </table>
+  <script src="dados_extrato.js"></script>
 </body>
 
 </html>

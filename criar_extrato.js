@@ -1,5 +1,4 @@
 export function dadosExtrato() {
-  debugger
   const tableData = this.extratos.map(function(extrato){
     return(
       `
@@ -13,7 +12,6 @@ export function dadosExtrato() {
         `
     )
   }).join('')
-  debugger
   const tableBody = document.getElementsByName("tableBody");
   tableBody[0].innerHTML = tableData;
 }
