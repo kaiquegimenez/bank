@@ -2,64 +2,74 @@
 <html>
 
 <head>
-  <style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    td,
-    th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-  </style>
   <script src="extrato_bancario.js"></script>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 
+<style>
+  body {
+    margin: 20px;
+    position: relative;
+  }
+</style>
+
 <body>
-
-    <fieldset>
-      <h3>Fazer novo lançamento</h3>
-      <input type="radio" id="sacar" checked name="tipo" value="depositar">
-      <label for="html">Depositar</label><br>
-      <input type="radio" id="depositar" name="tipo" value="sacar">
-      <label for="css">Sacar</label><br>
-      <!-- <input type ="text" id='tipo' name="tipo" required> -->
-      <br><br>
-      <input type="number" id="valor" placeholder="Valor" name="valor" value="0" required>
-      <br><br>
-      <textarea id="descrição" name="descrição" required placeholder="Descrição"></textarea>
-      <br>
-      <button type ="submit" onclick="novoLancamento()">Submit</button>
-    </fieldset>
-
-  <table>
+  <fieldset>
+    <h3>Fazer novo lançamento</h3>
+    <!-- <input type ="text" id='tipo' name="tipo" required> -->
+    <br><br>
+    <input class="form-control" type="number" id="valor" placeholder="Valor da transação" name="valor" required>
+    <br><br>
+    <textarea class="form-control" id="descrição" name="descrição" required placeholder="Descrição"></textarea>
+    <br>
+    <button class="btn btn-dark" type="submit" onclick="novoLancamento()">Enviar</button>
+  </fieldset>
+  <div id="#editar" style="display: none;" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Editar lançamento</h3>
+        </div>
+        <div class="modal-body">
+          <fieldset>
+            <!-- <input type ="text" id='tipo' name="tipo" required> -->
+            <br><br>
+            <input class="form-control" type="number" id="#valorEditar" value="0" placeholder="Valor da transação" name="valor" required>
+            <br><br>
+            <textarea class="form-control" id="#descriçãoEditar" name="descrição" value="" required placeholder="Descrição"></textarea>
+            <br>
+          </fieldset>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" onclick="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-primary" onclick="alterar(codigoAlterar)">Alterar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th>
+        <th scope="col">
           Data
-          <button onclick="ordenarData()">Ordenar</button>
+          <button class="btn btn-dark" onclick="ordenarData()">Ordenar</button>
         </th>
-        <th>
+        <th scope="col">
           Código
-          <button onclick="ordenarCodigo()">Ordenar</button>
+          <button class="btn btn-dark" onclick="ordenarCodigo()">Ordenar</button>
         </th>
-        <th>Descrição</th>
-        <th>Valor</th>
-        <th>Saldo</th>
-        <th>Ações</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Saldo</th>
+        <th scope="col">Ações</th>
       </tr>
     </thead>
     <tbody name="tableBody"></tbody>
   </table>
-  <script src="dados_extrato.js"></script>
+  <script src="extrato_bancario.js"></script>
 </body>
 
 </html>
